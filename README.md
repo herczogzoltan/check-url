@@ -44,12 +44,24 @@ Checking https://github.com/i-am-a-404 ..
 
 ```console
 foo@bar:~$ cat example-urls.txt | xargs -n 1 ./check-urls.sh
+Checking https://google.com ..
+⚠️ Warning - Redirection - code: 301 for URL: https://google.com
+Checking https://github.com ..
+✅ OK status code: 200 for domain https://github.com
+Checking https://invalidurl-asdf1234.com ..
+⛔ Error status code: 000 for URL: https://invalidurl-asdf1234.com
 ```
 
 ### Run in parallel mode using lines of files
 
 ```console
 foo@bar:~$ cat example-urls.txt | xargs -n 1 -P 4 ./check-urls.sh
+Checking https://google.com ..
+Checking https://github.com ..
+Checking https://invalidurl-asdf1234.com ..
+⛔ Error status code: 000 for URL: https://invalidurl-asdf1234.com
+⚠️ Warning - Redirection - code: 301 for URL: https://google.com
+✅ OK status code: 200 for domain https://github.com
 ```
 
 Modify `-P` flag in the above example according to your needs and resources
