@@ -16,7 +16,7 @@ The script echoes the error message and the url checked into the standard output
 
 ### Check single URL
 
-Example of a URL which responds 202:
+OK responses (HTTP status code 200-299):
 
 ```console
 foo@bar:~$ ./check-urls.sh https://github.com
@@ -24,12 +24,26 @@ Checking https://github.com ..
 OK status code: 200 for domain https://github.com
 ```
 
-Example when an error occured:
+WARNING responses (HTTP status code 300-399):
 
 ```console
-foo@bar:~$ ./check-urls.sh https://github.com/i-am-a-404    
+foo@bar:~$ ./check-urls.sh http://google.com
+Checking http://google.com ..
+Warning - Redirection - code: 301 for URL: http://google.com
+```
+
+Error responses:
+
+```console
+foo@bar:~$ ./check-urls.sh https://github.com/i-am-a-404
 Checking https://github.com/i-am-a-404 ..
-Error: 404 
+Severity: Error status code: 404 for URL: https://github.com/i-am-a-404
+```
+
+### Check multiple URLs from file source
+
+```console
+foo@bar:~$ cat filename | xargs -n 1 ./check-urls.sh
 ```
 
 ### Run in parallel mode using lines of files
@@ -37,3 +51,5 @@ Error: 404
 ```console
 foo@bar:~$ cat filename | xargs -n 1 -P 4 ./check-urls.sh
 ```
+
+Modify `-P` flag in the above example according to your needs and resources
