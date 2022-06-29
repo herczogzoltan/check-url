@@ -43,13 +43,13 @@ Severity: Error status code: 404 for URL: https://github.com/i-am-a-404
 ### Check multiple URLs from file source
 
 ```console
-foo@bar:~$ cat filename | xargs -n 1 ./check-urls.sh
+foo@bar:~$ cat example-urls.txt | xargs -n 1 ./check-urls.sh
 ```
 
 ### Run in parallel mode using lines of files
 
 ```console
-foo@bar:~$ cat filename | xargs -n 1 -P 4 ./check-urls.sh
+foo@bar:~$ cat example-urls.txt | xargs -n 1 -P 4 ./check-urls.sh
 ```
 
 Modify `-P` flag in the above example according to your needs and resources
