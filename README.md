@@ -21,7 +21,7 @@ The script echoes the error message and the url checked into the standard output
 ```console
 foo@bar:~$ ./check-urls.sh https://github.com
 Checking https://github.com ..
-OK status code: 200 for domain https://github.com
+✅ OK status code: $status_code for domain $URL
 ```
 
 ⚠️ WARNING responses (HTTP status code 300-399):
@@ -29,7 +29,7 @@ OK status code: 200 for domain https://github.com
 ```console
 foo@bar:~$ ./check-urls.sh http://google.com
 Checking http://google.com ..
-Warning - Redirection - code: 301 for URL: http://google.com
+⚠️ Warning - Redirection - code: 301 for URL: http://google.com
 ```
 
 ⛔ Error responses:
@@ -37,7 +37,7 @@ Warning - Redirection - code: 301 for URL: http://google.com
 ```console
 foo@bar:~$ ./check-urls.sh https://github.com/i-am-a-404
 Checking https://github.com/i-am-a-404 ..
-Severity: Error status code: 404 for URL: https://github.com/i-am-a-404
+⛔ Error status code: 404 for URL: https://github.com/i-am-a-404
 ```
 
 ### Check multiple URLs from file source
