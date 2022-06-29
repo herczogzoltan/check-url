@@ -14,12 +14,14 @@ foo@bar:~$ git clone git@github.com:herczogzoltan/url-checker.git
 
 The script echoes the error message and the url checked into the standard output. Also when an error occurs, it saves the URL into a file called `invalid_urls.txt`.
 
+### Check single URL
+
 Example of a URL which responds 202:
 
 ```console
 foo@bar:~$ ./check-urls.sh https://github.com
 Checking https://github.com ..
-OK 
+OK status code: 200 for domain https://github.com
 ```
 
 Example when an error occured:
